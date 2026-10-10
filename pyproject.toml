@@ -1,0 +1,6 @@
+[project]
+name = "drv10983_pyftdi"
+version = "0.1.0"
+dependencies = [
+    "pyftdi>=0.57.2",
+]

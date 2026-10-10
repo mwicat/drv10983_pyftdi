@@ -27,6 +27,10 @@ Quote from [Adafruit product page](https://www.adafruit.com/product/2264?srsltid
 
 ![Brushless click 3 board image](assets/board_brushless_click_3.png)
 
+Schematic from [MIKROE site](https://download.mikroe.com/documents/add-on-boards/click/brushless-3/brushless-3-click-schematic.pdf):
+
+![Brushless 3 click schematic](assets/board_schematic_brushless_click_3.png)
+
 ## Credits
 
 This project would not be possible without the great boards and code from [MikroElektronika](https://www.mikroe.com/), 
@@ -41,7 +45,32 @@ For motor, I used [BL4825O Mini 48mm Brushless Motor 12V from fascial gun](https
 As the name says, this motor requires around 12V to properly start. Also, it has relatively heavy outer rotor that needs
 early switch from open to closed loop to avoid overcurrent protection lock.
 
+## Connections
+
+### FT232
+
+- GND -> GND
+- D0 -> SCL
+- D1 -> SDA
+- D1 -> D2
+
+Also see this instructions from[Adafruit FT232H With SPI & I2C Devices](https://learn.adafruit.com/adafruit-ft232h-with-spi-and-i2c-libraries?view=all#i2c-devices):
+
+Connect FT232H D1 and D2 together with a jumper wire.  This combined connection is the I2C SDA data line.
+Add a 4.7 kilo-ohm resistor from the I2C SDA data line (pins D1 and D2 above) up to FT232H 5V.
+Add a 4.7 kilo-ohm resistor from FT232H D0 up to FT232H 5V.  This pin D0 is the I2C SCL clock line.
+
+NOTE: The resistors are already present on the Brushless 3 Click board, see the schematic.
+
 ## Installation
+
+First, you need to have `uv` tool installed.
+
+Example for mac:
+
+```shell
+brew install uv
+```
 
 ### Create virtualenv:
 
@@ -73,7 +102,7 @@ uv run program_board.py
 
 Probably libusb is not available. You need to install it on your OS. See [PyFtdi Troubleshooting](https://eblot.github.io/pyftdi/troubleshooting.html#error-no-backend-available)
 
-Mac:
+Example for mac:
 
 ```shell
 brew install libusb
