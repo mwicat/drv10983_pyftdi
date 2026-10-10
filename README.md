@@ -13,6 +13,20 @@ UART/FIFO IC](https://ftdichip.com/products/ft232hq/).
 
 Note: at this moment this just an example that you have to edit yourself to match your use case, but feel free to do so!
 
+## Hardware used
+
+### Adafruit FT232H Breakout board
+
+![FT232H board image](assets/board_ft232h.png)
+
+Quote from [Adafruit product page](https://www.adafruit.com/product/2264?srsltid=AU7gw4VPSbyPTGV4dMZFCNj6aCBNQ1O6NhweIoQsHrA3PN9YfCYBQh4E):
+
+> What can the FT232H chip do?  This chip from FTDI is similar to their USB to serial converter chips but adds a 'multi-protocol synchronous serial engine' which allows it to speak many common protocols like SPI, I2C, serial UART, JTAG, and more! 
+
+### MIKROE Brushless Click 3 board
+
+![Brushless click 3 board image](assets/board_brushless_click_3.png)
+
 ## Credits
 
 This project would not be possible without the great boards and code from [MikroElektronika](https://www.mikroe.com/), 
@@ -32,32 +46,42 @@ early switch from open to closed loop to avoid overcurrent protection lock.
 ### Create virtualenv:
 
 ```shell
-python -m venv .venv
+uv venv
 ```
 
-### Activate virtualenv (linux):
+### Activate virtualenv
 
 ```shell
 source .venv/bin/activate
 ```
 
-### Activate virtualenv (windows):
-
-```shell
-.venv\Scripts\activate.bat
-```
-
 ### Install dependencies:
 
 ```shell
-python -m pip install -r requirements.txt
+uv pip install -r requirements.txt
 ```
 
 ### Run:
 
 ```shell
-python program_board.py
+uv run program_board.py
 ```
+
+## Troubleshooting
+
+### ValueError: No backend available
+
+Probably libusb is not available. You need to install it on your OS. See [PyFtdi Troubleshooting](https://eblot.github.io/pyftdi/troubleshooting.html#error-no-backend-available)
+
+Mac:
+
+```shell
+brew install libusb
+```
+
+### pyftdi.usbtools.UsbToolsError: No USB device matches URL ...
+
+Make sure that your FT232H board is connected.
 
 ## Hardware
 
